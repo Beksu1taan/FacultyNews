@@ -436,3 +436,88 @@ html {
     width: 100%;
   }
 }
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .top-bar {
+    font-size: 14px;
+    text-align: center;
+    padding: 15px;
+    line-height: 1.6;
+  }
+
+  .hero {
+    height: 60vh;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 70px;
+    text-align: center;
+  }
+
+  .text {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .text h2 {
+    font-size: 28px;
+  }
+
+  .text p {
+    font-size: 16px;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .numbers {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .news-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .form {
+    padding: 20px;
+  }
+
+  .form input,
+  .form button {
+    width: 100%;
+  }
+
+  .social {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 30px;
+  }
+}
