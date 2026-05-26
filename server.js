@@ -7,12 +7,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection(process.env.MYSQL_URL);
+const db = mysql.createConnection({
+  uri: process.env.MYSQL_URL
+});
 
 db.connect((err) => {
+
   if (err) {
-    console.log("DB ERROR:", err);
+    console.log(err);
   } else {
+
     console.log("MySQL connected");
 
     db.query(`
@@ -22,34 +26,57 @@ db.connect((err) => {
         course VARCHAR(255),
         email VARCHAR(255)
       )
-    `, (err) => {
-      if (err) {
-        console.log("TABLE ERROR:", err);
-      } else {
-        console.log("Table ready");
-      }
-    });
+    `);
+
+    db.query(`
+      CREATE TABLE IF NOT EXISTS news (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(255),
+        image VARCHAR(500),
+        content TEXT,
+        views INT DEFAULT 0,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
+    db.query(`
+      CREATE TABLE IF NOT EXISTS admins (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        email VARCHAR(255),
+        password VARCHAR(255)
+      )
+    `);
+
+    db.query(`
+      INSERT IGNORE INTO admins (id, email, password)
+      VALUES (1, 'admin@gmail.com', '123456')
+    `);
+
+    console.log("Tables ready");
   }
 });
 
 app.get("/", (req, res) => {
-  res.send("API is working");
+  res.send("API WORKING");
 });
 
 app.post("/subscribe", (req, res) => {
+
   const { name, course, email } = req.body;
 
-  const sql =
-    "INSERT INTO subscribers (name, course, email) VALUES (?, ?, ?)";
+  db.query(
+    "INSERT INTO subscribers (name, course, email) VALUES (?, ?, ?)",
+    [name, course, email],
+    (err) => {
 
-  db.query(sql, [name, course, email], (err) => {
-    if (err) {
-      console.log("SQL ERROR:", err);
-      return res.json({ success: false });
+      if (err) {
+        console.log(err);
+        return res.json({ success: false });
+      }
+
+      res.json({ success: true });
     }
-
-    res.json({ success: true });
-  });
+  );
 });
 
 const PORT = process.env.PORT || 3000;
