@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DMD News</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="top-bar">
+NEWS — EVENTS — INTERVIEWS — COMMUNITY —
+</div>
+
+<section class="hero">
+  <h1>DMD News</h1>
+</section>
+
+<section class="text">
+  <h2>WE CREATE STORIES</h2>
+  <p>Новости, интервью и события, которые формируют студенческую жизнь</p>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <img src="students-lecture.jpg">
+    <h3>NEWS</h3>
+  </div>
+
+  <div class="card">
+    <img src="students-life.jpg">
+    <h3>INTERVIEWS</h3>
+  </div>
+
+  <div class="card">
+    <img src="narxoz-building.jpg">
+    <h3>EVENTS</h3>
+  </div>
+
+</section>
+
+<section class="numbers">
+  <div>+1K<br><span>Students</span></div>
+  <div>+50<br><span>Events</span></div>
+  <div>+40<br><span>Articles</span></div>
+</section>
+
+<section class="news">
+  <h2>Latest News</h2>
+
+  <div class="news-grid">
+
+    <div class="news-card">
+      <img src="students-lecture.jpg">
+      <h3>New Semester Started</h3>
+      <p>Студенты вернулись в кампус Narxoz</p>
+    </div>
+
+    <div class="news-card">
+      <img src="students-life.jpg">
+      <h3>Student Life</h3>
+      <p>Как проходит жизнь студентов</p>
+    </div>
+
+    <div class="news-card">
+      <img src="narxoz-building.jpg">
+      <h3>Campus Update</h3>
+      <p>Обновления университета</p>
+    </div>
+
+  </div>
+
+  <button class="news-btn" onclick="toggleNews()">View all news</button>
+
+  <div class="more-news" id="moreNews">
+
+    <div class="news-grid">
+
+      <div class="news-card">
+        <img src="students-life.jpg">
+        <h3>Interview with Students</h3>
+        <p>Истории студентов Narxoz</p>
+      </div>
+
+      <div class="news-card">
+        <img src="narxoz-building.jpg">
+        <h3>New Events Coming</h3>
+        <p>Анонсы будущих мероприятий</p>
+      </div>
+
+      <div class="news-card">
+        <img src="students-lecture.jpg">
+        <h3>Campus Improvements</h3>
+        <p>Что изменилось в университете</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ФОРМА -->
+<section class="form">
+  <h2>Stay Updated</h2>
+
+  <input id="name" placeholder="Your Name">
+  <input id="course" placeholder="Course">
+  <input id="email" placeholder="Email">
+
+  <button onclick="sendForm()">Subscribe</button>
+</section>
+
+<!-- СОЦСЕТИ -->
+<section class="social">
+
+  <a href="https://www.instagram.com/newsdmd" target="_blank" class="social-card insta">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a href="https://t.me/dmd_narxoz" target="_blank" class="social-card telegram">
+    <i class="fab fa-telegram-plane"></i>
+  </a>
+
+</section>
+
+<!-- JS -->
+<script>
+function toggleNews() {
+  const block = document.getElementById("moreNews");
+
+  if (block.style.display === "block") {
+    block.style.display = "none";
+  } else {
+    block.style.display = "block";
+  }
+}
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

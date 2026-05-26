@@ -1,0 +1,398 @@
+body{
+  margin:0;
+  background:#000;
+  color:#fff;
+  font-family:Arial, sans-serif;
+}
+
+/* TOP BAR */
+.top-bar{
+  background:#d1001c;
+  text-align:center;
+  padding:10px;
+  font-family:'Oswald';
+  letter-spacing:2px;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:url('narxoz-building.jpg') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+}
+
+.hero h1{
+  position:relative;
+  font-family:'Oswald';
+  font-size:100px;
+  letter-spacing:5px;
+}
+
+/* TEXT */
+.text{
+  text-align:center;
+  padding:100px 20px;
+}
+
+.text h2{
+  font-family:'Oswald';
+  font-size:80px;
+  color:#ff2a2a;
+}
+
+.text p{
+  max-width:600px;
+  margin:auto;
+  color:#aaa;
+  font-family:'Playfair Display';
+}
+
+/* CARDS */
+.cards{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  padding:80px 20px;
+}
+
+.card{
+  width:300px;
+  height:400px;
+  position:relative;
+  overflow:hidden;
+}
+
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:grayscale(100%);
+  transition:0.5s;
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+}
+
+.card h3{
+  position:absolute;
+  bottom:30px;
+  left:30px;
+  font-family:'Oswald';
+  font-size:30px;
+}
+
+.card:hover img{
+  transform:scale(1.1);
+  filter:grayscale(0%);
+}
+
+/* NUMBERS */
+.numbers{
+  display:flex;
+  justify-content:space-around;
+  padding:100px 20px;
+  text-align:center;
+}
+
+.numbers div{
+  font-size:40px;
+  font-family:'Oswald';
+}
+
+/* NEWS */
+.news{
+  padding:100px 20px;
+}
+
+.news h2{
+  text-align:center;
+  font-family:'Oswald';
+  font-size:60px;
+  margin-bottom:50px;
+}
+
+.news-grid{
+  display:flex;
+  gap:30px;
+  justify-content:center;
+}
+
+.news-card{
+  width:300px;
+}
+
+.news-card img{
+  width:100%;
+}
+
+.news-card p{
+  color:#aaa;
+}
+
+/* FORM */
+.form{
+  text-align:center;
+  padding:100px 20px;
+}
+
+.form input{
+  display:block;
+  margin:15px auto;
+  width:300px;
+  padding:10px;
+  background:transparent;
+  border:none;
+  border-bottom:1px solid #555;
+  color:white;
+}
+
+.form button{
+  margin-top:20px;
+  padding:12px 40px;
+  background:#d1001c;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+/* SOCIAL */
+.social{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.social a{
+  margin:0 20px;
+  color:white;
+  text-decoration:none;
+}
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
+
+/* HERO — глубина и эффект */
+.hero {
+  background-attachment: fixed;
+}
+
+.hero h1 {
+  font-size: 110px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+}
+
+/* текст блок — чище */
+.text h2 {
+  font-size: 70px;
+  letter-spacing: 3px;
+}
+
+.text p {
+  margin-top: 20px;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* КАРТОЧКИ — премиум эффект */
+.card {
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-color: #d1001c;
+}
+
+.card h3 {
+  font-size: 32px;
+  letter-spacing: 2px;
+}
+
+/* ЧИСЛА — аккуратнее */
+.numbers div {
+  font-size: 48px;
+  letter-spacing: 2px;
+}
+
+.numbers span {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* NEWS — сетка лучше */
+.news-grid {
+  flex-wrap: wrap;
+}
+
+.news-card {
+  transition: 0.3s;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ФОРМА — минимализм */
+.form input {
+  width: 320px;
+  font-size: 14px;
+}
+
+.form button {
+  background: transparent;
+  border: 1px solid #d1001c;
+  transition: 0.3s;
+}
+
+.form button:hover {
+  background: #d1001c;
+}
+
+/* СОЦИАЛЬНЫЕ ИКОНКИ */
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.social a {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.social a:hover {
+  border-color: #d1001c;
+  transform: scale(1.1);
+}
+/* NEWS BUTTON */
+.news-btn{
+  display:block;
+  margin:50px auto;
+  padding:12px 40px;
+  background:transparent;
+  border:1px solid #d1001c;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.news-btn:hover{
+  background:#d1001c;
+}
+
+/* скрытые новости */
+.more-news{
+  display:none;
+  margin-top:40px;
+}
+
+/* карточки новостей */
+.news-card{
+  border:1px solid rgba(255,255,255,0.08);
+  padding-bottom:20px;
+  transition:0.3s;
+}
+
+.news-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.news-card:hover{
+  transform:translateY(-8px);
+  border-color:#d1001c;
+}
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 100px 0;
+}
+
+.social-card {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Instagram стиль */
+.social-card.insta {
+  background: radial-gradient(circle at 30% 30%, #feda75, #fa7e1e, #d62976, #962fbf);
+}
+
+/* Telegram стиль */
+.social-card.telegram {
+  background: #0088cc;
+}
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 100px 0;
+}
+
+.social-card {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Instagram стиль */
+.social-card.insta {
+  background: radial-gradient(circle at 30% 30%, #feda75, #fa7e1e, #d62976, #962fbf);
+}
+
+/* Telegram стиль */
+.social-card.telegram {
+  background: #0088cc;
+}
+
+/* Hover эффект (ВАЖНО — делает премиум) */
+.social-card:hover {
+  transform: translateY(-8px) scale(1.1);
+  box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+}
+.social-card:hover {
+  transform: translateY(-8px) scale(1.1);
+  box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
+}
