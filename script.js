@@ -9,6 +9,7 @@ window.addEventListener("scroll", () => {
 });
 
 async function sendForm() {
+
   const btn = document.querySelector(".form button");
 
   const name = document.getElementById("name").value;
@@ -24,27 +25,39 @@ async function sendForm() {
   btn.disabled = true;
 
   try {
-    const res = await fetch("https://facultynews-production.up.railway.app/subscribe", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, course, email })
-    });
+
+    const res = await fetch(
+      "https://facultynews-production.up.railway.app/subscribe",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          course,
+          email
+        })
+      }
+    );
 
     const data = await res.json();
 
     if (data.success) {
+
       alert("Заявка отправлена");
 
       document.getElementById("name").value = "";
       document.getElementById("course").value = "";
       document.getElementById("email").value = "";
+
     } else {
+
       alert("Ошибка при отправке");
     }
 
   } catch (err) {
+
     alert("Сервер не отвечает");
     console.log(err);
   }
@@ -52,34 +65,56 @@ async function sendForm() {
   btn.innerText = "Subscribe";
   btn.disabled = false;
 }
+
 async function loadNews() {
 
   const grid = document.getElementById("newsGrid");
 
   if (!grid) return;
 
-  const res = await fetch("https://facultynews-production.up.railway.app/news");
+  try {
 
-  const news = await res.json();
+    const res = await fetch(
+      "https://facultynews-production.up.railway.app/news"
+    );
 
-  grid.innerHTML = "";
+    const news = await res.json();
 
-  news.forEach(article => {
+    grid.innerHTML = "";
 
-    grid.innerHTML += `
-      <a href="#" class="news-card">
+    news.forEach(article => {
 
-        <img src="${article.image}">
+      grid.innerHTML += `
 
-        <h3>${article.title}</h3>
+        <a href="article.html?id=${article.id}" class="news-card">
 
-        <p>
-          ${article.content.substring(0, 80)}...
-        </p>
+          <img 
+            src="${article.image || 'students-lecture.jpg'}"
+          >
 
-      </a>
+          <h3>
+            ${article.title || 'No title'}
+          </h3>
+
+          <p>
+            ${(article.content || '').substring(0, 80)}...
+          </p>
+
+        </a>
+
+      `;
+    });
+
+  } catch (err) {
+
+    console.log(err);
+
+    grid.innerHTML = `
+      <p style="color:white;">
+        Failed to load news
+      </p>
     `;
-  });
+  }
 }
 
 loadNews();
