@@ -55,61 +55,15 @@ NEWS — EVENTS — INTERVIEWS — COMMUNITY —
 </section>
 
 <section class="news">
+
   <h2>Latest News</h2>
 
-  <div class="news-grid">
-
-    <a href="news/semester.html" class="news-card">
-      <img src="students-lecture.jpg">
-      <h3>New Semester Started</h3>
-      <p>Студенты вернулись в кампус Narxoz</p>
-    </a>
-
-    <a href="news/life.html" class="news-card">
-      <img src="students-life.jpg">
-      <h3>Student Life</h3>
-      <p>Как проходит жизнь студентов</p>
-    </a>
-
-    <a href="news/campus.html" class="news-card">
-      <img src="narxoz-building.jpg">
-      <h3>Campus Update</h3>
-      <p>Обновления университета</p>
-    </a>
-
-  </div>
-
-  <button class="news-btn" onclick="toggleNews()">View all news</button>
-
-  <div class="more-news" id="moreNews">
-
-    <div class="news-grid">
-
-      <a href="news/interview.html" class="news-card">
-        <img src="students-life.jpg">
-        <h3>Interview with Students</h3>
-        <p>Истории студентов Narxoz</p>
-      </a>
-
-      <a href="news/events.html" class="news-card">
-        <img src="narxoz-building.jpg">
-        <h3>New Events Coming</h3>
-        <p>Анонсы будущих мероприятий</p>
-      </a>
-
-      <a href="news/improvements.html" class="news-card">
-        <img src="students-lecture.jpg">
-        <h3>Campus Improvements</h3>
-        <p>Что изменилось в университете</p>
-      </a>
-
-    </div>
-
-  </div>
+  <div class="news-grid" id="newsGrid"></div>
 
 </section>
 
 <section class="form">
+
   <h2>Stay Updated</h2>
 
   <input id="name" placeholder="Your Name">
@@ -117,6 +71,7 @@ NEWS — EVENTS — INTERVIEWS — COMMUNITY —
   <input id="email" placeholder="Email">
 
   <button onclick="sendForm()">Subscribe</button>
+
 </section>
 
 <section class="social">
@@ -130,18 +85,6 @@ NEWS — EVENTS — INTERVIEWS — COMMUNITY —
   </a>
 
 </section>
-
-<script>
-function toggleNews() {
-  const block = document.getElementById("moreNews");
-
-  if (block.style.display === "block") {
-    block.style.display = "none";
-  } else {
-    block.style.display = "block";
-  }
-}
-</script>
 
 <script src="script.js"></script>
 
