@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Article</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    .article-page{
+      width: 90%;
+      max-width: 1000px;
+      margin: 120px auto;
+      color: white;
+    }
+
+    .article-page img{
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      margin-bottom: 40px;
+    }
+
+    .article-page h1{
+      font-size: 60px;
+      margin-bottom: 30px;
+    }
+
+    .article-page p{
+      font-size: 24px;
+      line-height: 1.8;
+      color: #ccc;
+    }
+
+    .back-btn{
+      display: inline-block;
+      margin-top: 50px;
+      color: red;
+      text-decoration: none;
+      font-size: 22px;
+    }
+
+    body{
+      background: black;
+      font-family: Arial;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="article-page" id="article"></div>
+
+<script>
+
+async function loadArticle(){
+
+  const params = new URLSearchParams(window.location.search);
+
+  const id = params.get("id");
+
+  const res = await fetch("https://facultynews-production.up.railway.app/news");
+
+  const news = await res.json();
+
+  const article = news.find(item => item.id == id);
+
+  if(!article){
+    document.getElementById("article").innerHTML = "<h1>Article not found</h1>";
+    return;
+  }
+
+  document.getElementById("article").innerHTML = `
+  
+    <img src="${article.image}">
+
+    <h1>${article.title}</h1>
+
+    <p>${article.content}</p>
+
+    <a href="index.html" class="back-btn">
+      ← Back
+    </a>
+  
+  `;
+}
+
+loadArticle();
+
+</script>
+
+</body>
+</html>
