@@ -22,6 +22,7 @@ html{
 /* HERO */
 .hero{
   height:100vh;
+
   background:
   linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
   url('narxoz-building.jpg');
@@ -70,7 +71,7 @@ html{
   font-size:16px;
 }
 
-/* CARDS */
+/* MAIN CARDS */
 .cards{
   display:flex;
   justify-content:center;
@@ -147,6 +148,8 @@ html{
 /* NEWS */
 .news{
   padding:100px 20px;
+  position:relative;
+  z-index:20;
 }
 
 .news h2{
@@ -161,6 +164,9 @@ html{
   gap:30px;
   justify-content:center;
   flex-wrap:wrap;
+
+  position:relative;
+  z-index:20;
 }
 
 .news-card{
@@ -171,9 +177,17 @@ html{
 
   text-decoration:none;
   color:white;
-  display:block;
+
+  display:flex;
+  flex-direction:column;
+
   overflow:hidden;
   background:#000;
+
+  position:relative;
+  z-index:20;
+
+  cursor:pointer;
 }
 
 .news-card img{
@@ -185,11 +199,13 @@ html{
 
 .news-card h3{
   padding:15px 15px 0;
+  font-size:20px;
 }
 
 .news-card p{
   color:#aaa;
   padding:0 15px;
+  line-height:1.5;
 }
 
 .news-card:hover{
@@ -197,7 +213,7 @@ html{
   border-color:#d1001c;
 }
 
-/* NEWS BUTTON */
+/* BUTTON */
 .news-btn{
   display:block;
   margin:50px auto;
@@ -281,6 +297,11 @@ html{
 .social-card:hover{
   transform:translateY(-8px) scale(1.1);
   box-shadow:0 20px 40px rgba(255,0,0,0.2);
+}
+
+/* FIX LINKS */
+a{
+  pointer-events:auto;
 }
 
 /* MOBILE */
