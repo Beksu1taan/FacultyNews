@@ -3,14 +3,13 @@ const mysql = require("mysql2");
 const cors = require("cors");
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({
-  uri: process.env.MYSQL_URL
-});
+const db = mysql.createConnection(process.env.MYSQL_URL);
 
-db.connect(err => {
+db.connect((err) => {
   if (err) {
     console.log("DB ERROR:", err);
   } else {
@@ -40,7 +39,8 @@ app.get("/", (req, res) => {
 app.post("/subscribe", (req, res) => {
   const { name, course, email } = req.body;
 
-  const sql = "INSERT INTO subscribers (name, course, email) VALUES (?, ?, ?)";
+  const sql =
+    "INSERT INTO subscribers (name, course, email) VALUES (?, ?, ?)";
 
   db.query(sql, [name, course, email], (err) => {
     if (err) {
