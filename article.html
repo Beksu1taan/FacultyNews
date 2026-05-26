@@ -5,89 +5,111 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Article</title>
+  <title>DMD Article</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
 
-body{
-  margin:0;
-  background:#050505;
-  color:white;
-  font-family:Arial, sans-serif;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-.article-page{
-  width:90%;
-  max-width:900px;
-  margin:60px auto;
-}
+    body{
+      background:#050505;
+      color:white;
+      font-family:Arial, sans-serif;
+    }
 
-.article-page img{
-  width:100%;
-  height:420px;
-  object-fit:cover;
-  border-radius:20px;
-  margin-bottom:40px;
-}
+    .article-container{
+      width:90%;
+      max-width:1100px;
+      margin:60px auto;
+    }
 
-.article-page h1{
-  font-size:64px;
-  line-height:1.1;
-  margin-bottom:30px;
-  font-weight:800;
-}
+    .article-image{
+      width:100%;
+      height:520px;
+      object-fit:cover;
+      border-radius:24px;
+      margin-bottom:50px;
+    }
 
-.article-page p{
-  font-size:24px;
-  line-height:1.9;
-  color:#cfcfcf;
-}
+    .article-info{
+      display:flex;
+      gap:20px;
+      margin-bottom:25px;
+      color:#888;
+      font-size:16px;
+    }
 
-.back-btn{
-  display:inline-block;
-  margin-top:50px;
-  padding:14px 28px;
-  border:1px solid red;
-  color:white;
-  text-decoration:none;
-  transition:0.3s;
-}
+    .article-title{
+      font-size:72px;
+      line-height:1.05;
+      font-family:'Oswald', sans-serif;
+      margin-bottom:35px;
+    }
 
-.back-btn:hover{
-  background:red;
-}
+    .article-content{
+      font-size:27px;
+      line-height:1.9;
+      color:#d5d5d5;
+      margin-bottom:60px;
+    }
 
-@media(max-width:768px){
+    .back-btn{
+      display:inline-block;
+      padding:16px 34px;
+      border:1px solid red;
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-size:18px;
+    }
 
-  .article-page{
-    width:92%;
-    margin:40px auto;
-  }
+    .back-btn:hover{
+      background:red;
+    }
 
-  .article-page img{
-    height:240px;
-    border-radius:14px;
-  }
+    @media(max-width:768px){
 
-  .article-page h1{
-    font-size:38px;
-  }
+      .article-container{
+        width:92%;
+        margin:30px auto;
+      }
 
-  .article-page p{
-    font-size:19px;
-    line-height:1.7;
-  }
+      .article-image{
+        height:240px;
+        border-radius:16px;
+        margin-bottom:30px;
+      }
 
-}
+      .article-title{
+        font-size:42px;
+        margin-bottom:20px;
+      }
 
-</style>
+      .article-content{
+        font-size:20px;
+        line-height:1.7;
+      }
+
+      .article-info{
+        flex-direction:column;
+        gap:10px;
+        font-size:14px;
+      }
+
+    }
+
+  </style>
 </head>
 
 <body>
 
-<div class="article-page" id="article"></div>
+<div class="article-container" id="article"></div>
 
 <script>
 
@@ -97,29 +119,62 @@ async function loadArticle(){
 
   const id = params.get("id");
 
-  const res = await fetch("https://facultynews-production.up.railway.app/news");
+  const res = await fetch(
+    "https://facultynews-production.up.railway.app/news"
+  );
 
   const news = await res.json();
 
   const article = news.find(item => item.id == id);
 
   if(!article){
-    document.getElementById("article").innerHTML = "<h1>Article not found</h1>";
+
+    document.getElementById("article").innerHTML = `
+      <h1>Article not found</h1>
+    `;
+
     return;
   }
 
+  const date = new Date(article.created_at);
+
+  const formattedDate =
+    date.toLocaleDateString("ru-RU");
+
+  const randomViews =
+    Math.floor(Math.random() * 900) + 100;
+
   document.getElementById("article").innerHTML = `
-  
-    <img src="${article.image}">
 
-    <h1>${article.title}</h1>
+    <img
+      class="article-image"
+      src="${article.image}"
+    >
 
-    <p>${article.content}</p>
+    <div class="article-info">
+
+      <span>
+        Published: ${formattedDate}
+      </span>
+
+      <span>
+        👁 ${randomViews} views
+      </span>
+
+    </div>
+
+    <h1 class="article-title">
+      ${article.title}
+    </h1>
+
+    <div class="article-content">
+      ${article.content}
+    </div>
 
     <a href="index.html" class="back-btn">
-      ← Back
+      ← Back to News
     </a>
-  
+
   `;
 }
 
