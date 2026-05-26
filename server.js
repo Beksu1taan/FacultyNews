@@ -71,10 +71,66 @@ app.post("/subscribe", (req, res) => {
 
       if (err) {
         console.log(err);
-        return res.json({ success: false });
+        return res.json({ success:false });
       }
 
-      res.json({ success: true });
+      res.json({ success:true });
+    }
+  );
+});
+
+app.post("/login", (req, res) => {
+
+  const { email, password } = req.body;
+
+  db.query(
+    "SELECT * FROM admins WHERE email = ? AND password = ?",
+    [email, password],
+    (err, result) => {
+
+      if (err) {
+        return res.json({ success:false });
+      }
+
+      if (result.length > 0) {
+        res.json({ success:true });
+      } else {
+        res.json({ success:false });
+      }
+    }
+  );
+});
+
+app.post("/create-news", (req, res) => {
+
+  const { title, image, content } = req.body;
+
+  db.query(
+    "INSERT INTO news (title, image, content) VALUES (?, ?, ?)",
+    [title, image, content],
+    (err) => {
+
+      if (err) {
+        console.log(err);
+        return res.json({ success:false });
+      }
+
+      res.json({ success:true });
+    }
+  );
+});
+
+app.get("/news", (req, res) => {
+
+  db.query(
+    "SELECT * FROM news ORDER BY id DESC",
+    (err, result) => {
+
+      if (err) {
+        return res.json([]);
+      }
+
+      res.json(result);
     }
   );
 });
