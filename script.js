@@ -52,3 +52,34 @@ async function sendForm() {
   btn.innerText = "Subscribe";
   btn.disabled = false;
 }
+async function loadNews() {
+
+  const grid = document.getElementById("newsGrid");
+
+  if (!grid) return;
+
+  const res = await fetch("https://facultynews-production.up.railway.app/news");
+
+  const news = await res.json();
+
+  grid.innerHTML = "";
+
+  news.forEach(article => {
+
+    grid.innerHTML += `
+      <a href="#" class="news-card">
+
+        <img src="${article.image}">
+
+        <h3>${article.title}</h3>
+
+        <p>
+          ${article.content.substring(0, 80)}...
+        </p>
+
+      </a>
+    `;
+  });
+}
+
+loadNews();
