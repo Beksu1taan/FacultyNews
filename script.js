@@ -24,7 +24,7 @@ async function sendForm() {
   btn.disabled = true;
 
   try {
-    const res = await fetch("https://dmd-backend-production.up.railway.app/subscribe", {
+    const res = await fetch("https://facultynews-production.up.railway.app/subscribe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
