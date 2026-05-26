@@ -396,3 +396,43 @@ html {
   transform: translateY(-8px) scale(1.1);
   box-shadow: 0 20px 40px rgba(255, 0, 0, 0.2);
 }
+@media (max-width: 768px) {
+
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  input,
+  button {
+    width: 100%;
+  }
+}
