@@ -168,16 +168,28 @@ html{
   border:1px solid rgba(255,255,255,0.08);
   padding-bottom:20px;
   transition:0.3s;
+
+  text-decoration:none;
+  color:white;
+  display:block;
+  overflow:hidden;
+  background:#000;
 }
 
 .news-card img{
   width:100%;
   height:200px;
   object-fit:cover;
+  display:block;
+}
+
+.news-card h3{
+  padding:15px 15px 0;
 }
 
 .news-card p{
   color:#aaa;
+  padding:0 15px;
 }
 
 .news-card:hover{
