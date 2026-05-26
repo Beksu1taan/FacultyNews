@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#050505;
+  color:white;
+  font-family:'Inter', sans-serif;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+}
+
+.panel{
+  width:100%;
+  max-width:700px;
+  background:#111;
+  border:1px solid #222;
+  border-radius:20px;
+  padding:40px;
+}
+
+h1{
+  font-family:'Oswald';
+  font-size:50px;
+  margin-bottom:30px;
+  text-align:center;
+}
+
+input,
+textarea{
+  width:100%;
+  padding:18px;
+  margin-bottom:20px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  color:white;
+  font-size:16px;
+  border-radius:10px;
+}
+
+textarea{
+  min-height:250px;
+  resize:vertical;
+}
+
+button{
+  width:100%;
+  padding:18px;
+  background:#d1001c;
+  color:white;
+  border:none;
+  font-size:18px;
+  cursor:pointer;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+button:hover{
+  opacity:0.8;
+}
+
+.login{
+  display:block;
+}
+
+.admin{
+  display:none;
+}
+
+.status{
+  margin-top:20px;
+  text-align:center;
+  color:#aaa;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="panel">
+
+  <div class="login" id="loginBox">
+
+    <h1>Admin Login</h1>
+
+    <input type="email" id="email" placeholder="Admin Email">
+
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="login()">
+      Login
+    </button>
+
+  </div>
+
+  <div class="admin" id="adminBox">
+
+    <h1>Create News</h1>
+
+    <input type="text" id="title" placeholder="News Title">
+
+    <input type="text" id="image" placeholder="Image URL">
+
+    <textarea id="content" placeholder="News Content"></textarea>
+
+    <button onclick="publishNews()">
+      Publish News
+    </button>
+
+  </div>
+
+  <div class="status" id="status"></div>
+
+</div>
+
+<script>
+
+let loggedIn = false;
+
+async function login() {
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const res = await fetch("https://facultynews-production.up.railway.app/login", {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      email,
+      password
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.success){
+
+    loggedIn = true;
+
+    document.getElementById("loginBox").style.display = "none";
+
+    document.getElementById("adminBox").style.display = "block";
+
+    document.getElementById("status").innerText = "Logged in";
+
+  } else {
+
+    document.getElementById("status").innerText = "Wrong credentials";
+  }
+}
+
+async function publishNews(){
+
+  const title = document.getElementById("title").value;
+  const image = document.getElementById("image").value;
+  const content = document.getElementById("content").value;
+
+  const res = await fetch("https://facultynews-production.up.railway.app/create-news", {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      title,
+      image,
+      content
+    })
+  });
+
+  const data = await res.json();
+
+  if(data.success){
+
+    document.getElementById("status").innerText = "News published";
+
+    document.getElementById("title").value = "";
+    document.getElementById("image").value = "";
+    document.getElementById("content").value = "";
+
+  } else {
+
+    document.getElementById("status").innerText = "Error";
+  }
+}
+
+</script>
+
+</body>
+</html>
