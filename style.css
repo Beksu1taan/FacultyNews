@@ -454,7 +454,7 @@ a{
 }
 
 .release-section h2{
-  font-size:52px;
+  font-size:46px;
   text-align:center;
   margin-bottom:70px;
   font-family:'Oswald';
@@ -471,7 +471,7 @@ a{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:28px 40px;
+  padding:23px 36px;
   border-bottom:1px solid rgba(255,255,255,0.06);
   transition:0.3s;
 }
@@ -495,7 +495,7 @@ a{
 }
 
 .release-row span{
-  font-size:24px;
+  font-size:20px;
 }
 
 @media(max-width:768px){
