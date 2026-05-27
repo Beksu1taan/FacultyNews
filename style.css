@@ -10,7 +10,6 @@ html{
   scroll-behavior:smooth;
 }
 
-/* TOP BAR */
 .top-bar{
   background:#d1001c;
   text-align:center;
@@ -19,7 +18,6 @@ html{
   letter-spacing:2px;
 }
 
-/* HERO */
 .hero{
   height:100vh;
 
@@ -48,7 +46,6 @@ html{
   text-align:center;
 }
 
-/* TEXT */
 .text{
   text-align:center;
   padding:100px 20px;
@@ -71,7 +68,6 @@ html{
   font-size:16px;
 }
 
-/* MAIN CARDS */
 .cards{
   display:flex;
   justify-content:center;
@@ -124,7 +120,6 @@ html{
   filter:grayscale(0%);
 }
 
-/* NUMBERS */
 .numbers{
   display:flex;
   justify-content:space-around;
@@ -145,7 +140,6 @@ html{
   color:#aaa;
 }
 
-/* NEWS */
 .news{
   padding:100px 20px;
   position:relative;
@@ -213,7 +207,6 @@ html{
   border-color:#d1001c;
 }
 
-/* BUTTON */
 .news-btn{
   display:block;
   margin:50px auto;
@@ -234,7 +227,6 @@ html{
   margin-top:40px;
 }
 
-/* FORM */
 .form{
   text-align:center;
   padding:100px 20px;
@@ -266,7 +258,6 @@ html{
   background:#d1001c;
 }
 
-/* SOCIAL */
 .social{
   display:flex;
   justify-content:center;
@@ -299,12 +290,10 @@ html{
   box-shadow:0 20px 40px rgba(255,0,0,0.2);
 }
 
-/* FIX LINKS */
 a{
   pointer-events:auto;
 }
 
-/* MOBILE */
 @media (max-width:768px){
 
   .top-bar{
@@ -389,7 +378,6 @@ a{
     font-size:24px;
   }
 }
-/* SCHEDULE */
 
 .schedule{
   padding:120px 20px;
@@ -441,7 +429,6 @@ a{
   line-height:1.7;
 }
 
-/* MOBILE */
 
 @media(max-width:768px){
 
@@ -456,6 +443,86 @@ a{
   .schedule-card{
     width:100%;
     max-width:350px;
+  }
+
+}
+
+.release-section{
+  width:90%;
+  max-width:1200px;
+  margin:140px auto;
+}
+
+.release-section h2{
+  font-size:70px;
+  text-align:center;
+  margin-bottom:70px;
+  font-family:'Oswald';
+}
+
+.release-table{
+  background:#0c0c0c;
+  border-radius:30px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.06);
+}
+
+.release-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:38px 50px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  transition:0.3s;
+}
+
+.release-row:last-child{
+  border-bottom:none;
+}
+
+.release-row:hover{
+  background:#151515;
+}
+
+.release-head{
+  background:#111;
+}
+
+.release-head span{
+  color:#ff3d3d;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.release-row span{
+  font-size:32px;
+}
+
+@media(max-width:768px){
+
+  .release-section{
+    width:92%;
+    margin:90px auto;
+  }
+
+  .release-section h2{
+    font-size:42px;
+    margin-bottom:40px;
+  }
+
+  .release-row{
+    padding:24px;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .release-row span{
+    font-size:22px;
+  }
+
+  .release-head span{
+    font-size:18px;
   }
 
 }
