@@ -60,6 +60,8 @@ app.get("/", (req, res) => {
   res.send("API WORKING");
 });
 
+/* SUBSCRIBE */
+
 app.post("/subscribe", (req, res) => {
 
   const { name, course, email } = req.body;
@@ -78,6 +80,8 @@ app.post("/subscribe", (req, res) => {
     }
   );
 });
+
+/* LOGIN */
 
 app.post("/login", (req, res) => {
 
@@ -101,6 +105,8 @@ app.post("/login", (req, res) => {
   );
 });
 
+/* CREATE NEWS */
+
 app.post("/create-news", (req, res) => {
 
   const { title, image, content } = req.body;
@@ -120,6 +126,8 @@ app.post("/create-news", (req, res) => {
   );
 });
 
+/* GET NEWS */
+
 app.get("/news", (req, res) => {
 
   db.query(
@@ -127,10 +135,32 @@ app.get("/news", (req, res) => {
     (err, result) => {
 
       if (err) {
+        console.log(err);
         return res.json([]);
       }
 
       res.json(result);
+    }
+  );
+});
+
+/* REAL VIEWS */
+
+app.post("/view/:id", (req, res) => {
+
+  const id = req.params.id;
+
+  db.query(
+    "UPDATE news SET views = views + 1 WHERE id = ?",
+    [id],
+    (err) => {
+
+      if (err) {
+        console.log(err);
+        return res.json({ success:false });
+      }
+
+      res.json({ success:true });
     }
   );
 });
