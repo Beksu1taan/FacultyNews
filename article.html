@@ -3,11 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
   <title>DMD Article</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap"
+        rel="stylesheet">
 
   <style>
 
@@ -20,53 +22,52 @@
     body{
       background:#050505;
       color:white;
-      font-family:Arial, sans-serif;
+      font-family:Arial,sans-serif;
     }
 
     .article-container{
       width:90%;
-      max-width:1100px;
-      margin:60px auto;
+      max-width:1000px;
+      margin:50px auto;
     }
 
     .article-image{
       width:100%;
-      height:520px;
+      height:450px;
       object-fit:cover;
       border-radius:24px;
-      margin-bottom:50px;
+      margin-bottom:35px;
     }
 
     .article-info{
       display:flex;
-      gap:20px;
-      margin-bottom:25px;
+      gap:25px;
       color:#888;
-      font-size:16px;
+      margin-bottom:20px;
+      font-size:15px;
     }
 
     .article-title{
-      font-size:72px;
+      font-size:64px;
       line-height:1.05;
-      font-family:'Oswald', sans-serif;
-      margin-bottom:35px;
+      margin-bottom:30px;
+      font-family:'Oswald',sans-serif;
     }
 
     .article-content{
-      font-size:27px;
+      font-size:24px;
       line-height:1.9;
-      color:#d5d5d5;
-      margin-bottom:60px;
+      color:#d0d0d0;
+      margin-bottom:50px;
     }
 
     .back-btn{
       display:inline-block;
-      padding:16px 34px;
+      padding:15px 30px;
       border:1px solid red;
       color:white;
       text-decoration:none;
       transition:0.3s;
-      font-size:18px;
     }
 
     .back-btn:hover{
@@ -83,23 +84,20 @@
       .article-image{
         height:240px;
         border-radius:16px;
-        margin-bottom:30px;
       }
 
       .article-title{
         font-size:42px;
-        margin-bottom:20px;
       }
 
       .article-content{
-        font-size:20px;
+        font-size:19px;
         line-height:1.7;
       }
 
       .article-info{
         flex-direction:column;
-        gap:10px;
-        font-size:14px;
+        gap:8px;
       }
 
     }
@@ -115,9 +113,17 @@
 
 async function loadArticle(){
 
-  const params = new URLSearchParams(window.location.search);
+  const params =
+    new URLSearchParams(window.location.search);
 
   const id = params.get("id");
+
+  await fetch(
+    `https://facultynews-production.up.railway.app/view/${id}`,
+    {
+      method:"POST"
+    }
+  );
 
   const res = await fetch(
     "https://facultynews-production.up.railway.app/news"
@@ -125,24 +131,22 @@ async function loadArticle(){
 
   const news = await res.json();
 
-  const article = news.find(item => item.id == id);
+  const article =
+    news.find(item => item.id == id);
 
   if(!article){
 
-    document.getElementById("article").innerHTML = `
-      <h1>Article not found</h1>
-    `;
+    document.getElementById("article").innerHTML =
+      "<h1>Article not found</h1>";
 
     return;
   }
 
-  const date = new Date(article.created_at);
+  const date =
+    new Date(article.created_at);
 
   const formattedDate =
     date.toLocaleDateString("ru-RU");
-
-  const randomViews =
-    Math.floor(Math.random() * 900) + 100;
 
   document.getElementById("article").innerHTML = `
 
@@ -154,11 +158,11 @@ async function loadArticle(){
     <div class="article-info">
 
       <span>
-        Published: ${formattedDate}
+        📅 ${formattedDate}
       </span>
 
       <span>
-        👁 ${randomViews} views
+        👁 ${article.views} views
       </span>
 
     </div>
